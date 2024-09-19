@@ -164,36 +164,79 @@ nav li a:hover {
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
-/* Media Queries */
 
-@media (min-width: 768px) {
-  .projects-grid {
-    justify-content: space-between;
-  }
+.card-content {
+  padding: 1rem;
+  background-color: var(--prussian-blue);
+  color: var(--buff);
+  text-align: center; /* Zentriert die Beschreibung */
+}
 
-  .project-tile {
-    flex-grow: 0;
-    flex-basis: calc(50% - 20px);
-  }
+.card-title {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
 }
-@media (min-width: 1024px) {
-  .projects-grid {
-    justify-content: space-between;
-  }
-  .project-tile {
-    flex-grow: 0;
-    flex-basis: calc(33.333% - 20px);
-  }
+
+.card-description {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
 }
+
+.card-languages {
+  display: flex;
+  justify-content: space-evenly;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.card-languages i {
+  font-size: 1.5rem;
+  color: var(--buff);
+}
+
+.card-links {
+  display: flex;
+  justify-content: space-between; /* Verteilt Links nach links und rechts */
+  margin-top: 1rem;
+}
+
+.card-link {
+  text-decoration: none;
+  color: var(--buff);
+  background-color: var(--prussian-blue);
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.card-link-left {
+  margin-right: auto; /* Drückt den Link nach links */
+}
+
+.card-link-right {
+  margin-left: auto; /* Drückt den Link nach rechts */
+}
+
+.card-link:hover {
+  background-color: var(--bright-pink-crayola);
+}
+
+
+
+
+
+
 
 .card {
   display: flex;
   flex-direction: column;
+  justify-content: stretch;
 }
 
 .card-image img {
   width: 100%;
-  height: auto;
+  
   display: block;
 }
 
@@ -280,4 +323,27 @@ footer {
   color: var(--buff);
   font-size: 2rem;
   font-weight: 300;
+}
+
+/* Media Queries */
+
+@media (min-width: 768px) {
+  .projects-grid {
+    justify-content: space-between;
+  }
+
+  .project-tile {
+    flex-grow: 0;
+    flex-basis: calc(50% - 20px);
+  
+  }
+}
+@media (min-width: 1024px) {
+  .projects-grid {
+    justify-content: space-between;
+  }
+  .project-tile {
+    flex-grow: 0;
+    flex-basis: calc(33.333% - 20px);
+  }
 }
