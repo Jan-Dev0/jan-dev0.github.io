@@ -130,13 +130,12 @@ nav li a:hover {
 /* Tab menu */
 .tab-container {
   display: flex;
-  margin-top: 5rem;
+  margin-top: 12rem;
   color: white;
 }
 
 .tab-menu {
-  border: 1px solid;
-  width: 200px;
+  width: 300px;
   align-self: flex-start;
   margin-left: -30rem;
  
@@ -149,21 +148,35 @@ nav li a:hover {
 
 .tab-menu li {
   font-size: 2.4rem;
-  padding: 10px;
+  padding: 20px;
   cursor: pointer;
-  
- 
   transition: background-color 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.tab-menu li::before {
+  content: "";
+  display: block;
+  width: 20px;
+  height: 20px;
+  border: 1px solid white;
+  text-decoration: none;
 }
 
 .tab-menu li.active {
-
+  text-decoration: underline;
 }
 
 .tab-content {
   padding: 20px;
   flex-grow: 1;
-  border: 1px solid white;
+  width: 450px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
 }
 
 .tab-panel {
