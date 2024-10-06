@@ -37,7 +37,7 @@
       title: "Workit landing page",
       description: "",
       image: "./images/workit-landing-page.png",
-      languages: ["html5", "css3-alt", "js-square"],
+      languages: ["html5", "css3-alt"],
       repoLink: "https://github.com/Jan-Dev0/12-workit-landing-page",
       previewLink: "https://jan-dev0.github.io/12-workit-landing-page/",
     },
@@ -45,7 +45,7 @@
       title: "Results summary component",
       description: "",
       image: "./images/results-summary-component.png",
-      languages: ["html5", "css3-alt", "js-square"],
+      languages: ["html5", "css3-alt"],
       repoLink: "https://github.com/Jan-Dev0/11-results-summary-component",
       previewLink: "https://jan-dev0.github.io/11-results-summary-component/",
     },
@@ -53,26 +53,38 @@
 
  
   function createProjectCards(projects) {
-    const grid = document.querySelector('.projects-grid');
+    const grid = document.querySelector(".projects__grid");
     
     projects.forEach(project => {
       
       const card = document.createElement('div');
-      card.className = 'project-tile';
+      card.className = "project";
       
       card.innerHTML = `
-        <div class="card">
-          <div class="card-image">
-            <img src="${project.image}" alt="${project.title}">
+        <div class="project__card">
+          <div class="project__image-wrapper" >
+            <img src="${project.image}" alt="${
+        project.title
+      }" class="project__image">
           </div>
-          <div class="card-content">
-            <h3 class="card-title">${project.title}</h3>
-            <div class="card-languages">
-              ${project.languages.map(lang => `<i class="fab fa-${lang}" title="${lang}"></i>`).join('')}
+
+          <div class="project__details">
+            <h3 class="project__title">${project.title}</h3>
+            <div class="project__languages">
+              ${project.languages
+                .map(
+                  (lang) => `<i class="fab fa-${lang}" title="${lang}"></i>
+                <span class="sr-only">${lang}</span>`
+                )
+                .join("")}
             </div>
-            <div class="card-links">
-              <a href="${project.repoLink}" target="_blank" class="card-link card-link-left">Code</a>
-              <a href="${project.previewLink}" target="_blank" class="card-link card-link-right">Preview</a>
+            <div class="project__links">
+              <a href="${
+                project.repoLink
+              }" target="_blank" class="project__link project__link--code">Code</a>
+              <a href="${
+                project.previewLink
+              }" target="_blank" class="project__link project__link--preview">Preview</a>
             </div>
           </div>
         </div>
@@ -87,19 +99,19 @@
   createProjectCards(projects);
 
 
-  const tabItems = document.querySelectorAll('.tab-item');
-const tabPanels = document.querySelectorAll('.tab-panel');
+  const tabItems = document.querySelectorAll(".tabs__item");
+const tabPanels = document.querySelectorAll(".tabs__panel");
 
 tabItems.forEach(item => {
   item.addEventListener('click', () => {
     // Remove active class from all items and panels
-    tabItems.forEach(item => item.classList.remove('active'));
-    tabPanels.forEach(panel => panel.classList.remove('active'));
+    tabItems.forEach((item) => item.classList.remove("tabs__item--active"));
+    tabPanels.forEach((panel) => panel.classList.remove("tabs__panel--active"));
 
     // Add active class to the clicked item and the corresponding panel
-    item.classList.add('active');
+    item.classList.add("tabs__item--active");
     const tabPanel = document.getElementById(item.dataset.tab);
-    tabPanel.classList.add('active');
+    tabPanel.classList.add("tabs__panel--active");
   });
 });
 
