@@ -139,15 +139,16 @@ const projects = [
   },
 ];
 
- const prevBtn = document.querySelector(".projects__nav-btn--prev");
- const nextBtn = document.querySelector(".projects__nav-btn--next");
+const section = document.querySelector(".projects");
+const prevBtn = document.querySelector(".projects__nav-btn--prev");
+const nextBtn = document.querySelector(".projects__nav-btn--next");
+const navbarToggle = document.getElementById("navbar-toggle");
+const navbarList = document.getElementById("navbar-list");
 
 const projectsPerPage = 6;
 let currentIndex = 0;
 
-
 function renderProjects() {
-  const section = document.querySelector('.projects');
   const grid = document.querySelector(".projects__grid");
   grid.innerHTML = "";
   end = Math.min(currentIndex + projectsPerPage, projects.length);
@@ -167,10 +168,7 @@ function renderProjects() {
             <h3 class="project__title">${project.title}</h3>
             <div class="project__languages">
               ${project.languages
-                .map(
-                  (lang) => `<img class="projects__lang-icon" src="/icons/${lang}.png"title="${lang}"></i>
-                `
-                )
+                .map((lang) => `<img class="project__lang-icon" src="/icons/${lang}.png"title="${lang}"></i>`)
                 .join("")}
             </div>
             <div class="project__links">
@@ -185,27 +183,30 @@ function renderProjects() {
     setTimeout(() => {
       card.classList.add("show");
     }, 50);
-  };
-  
-section.scrollIntoView({ behavior: 'smooth' }); 
+  }
 
-
-    prevBtn.disabled = currentIndex === 0;
-    nextBtn.disabled = currentIndex + projectsPerPage >= projects.length;
+  prevBtn.disabled = currentIndex === 0;
+  nextBtn.disabled = currentIndex + projectsPerPage >= projects.length;
 }
 
-
 prevBtn.addEventListener("click", () => {
-  currentIndex = Math.min(currentIndex - projectsPerPage, 0);
+  currentIndex = Math.max(currentIndex - projectsPerPage, 0);
   renderProjects();
+  section.scrollIntoView({ behavior: "smooth" });
 });
 
 nextBtn.addEventListener("click", () => {
-  currentIndex = Math.min(currentIndex + projectsPerPage)
+  if (currentIndex + projectsPerPage < projects.length) {
+    currentIndex += projectsPerPage;
+  } else {
+    currentIndex = projects.length - projectsPerPage;
+  }
   renderProjects();
+  section.scrollIntoView({ behavior: "smooth" });
 });
 
-
-
+navbarToggle.addEventListener("click", () => {
+  navbarList.classList.toggle("show"); // Klasse 'show' hinzufügen oder entfernen
+});
 
 renderProjects();
