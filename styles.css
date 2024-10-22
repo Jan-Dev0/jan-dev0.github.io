@@ -362,9 +362,13 @@ body {
   color: var(--prussian-blue);
   cursor: pointer;
   border-radius: 5px;
+  transition: all 0.3s ease;
 }
+
 .projects__nav-btn:hover {
   transform: scale(1.1);
+  background-color: hsl(198, 20%, 42%, 0.9);
+  box-shadow: 2px 2px 5px rgb(0, 0 ,0, 0.1);
 }
 
 .projects__nav-btn:disabled {
