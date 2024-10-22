@@ -206,7 +206,7 @@ nextBtn.addEventListener("click", () => {
 });
 
 navbarToggle.addEventListener("click", () => {
-  navbarList.classList.toggle("show"); // Klasse 'show' hinzufügen oder entfernen
-});
-
+  navbarList.classList.toggle("show");
+  navbarToggle.classList.toggle('active');
+})
 renderProjects();
